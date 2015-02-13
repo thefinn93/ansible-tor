@@ -1,0 +1,4 @@
+---
+ - name: Get the tor relay's fingerprint
+   shell: cat /var/lib/tor/fingerprint | awk '{print $2}'
+   register: tor_relay_fingerprint

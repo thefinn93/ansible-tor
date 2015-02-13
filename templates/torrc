@@ -98,6 +98,9 @@ ServerTransportOptions {{ tor_ServerTransportOptions }}
 {% if tor_MyFamily is defined %}
 MyFamily {{ tor_MyFamily }}
 {% endif %}
+{% if tor_auto_family is defined and tor_auto_family %}
+MyFamily {% for relay in hosts[play_hosts] %}${{ hostvars[relay]['tor_relay_fingerprint']}}, {% endfor %}
+{% endif %}
 {% if tor_ReachableAddresses is defined %}
 ReachableAddresses {{ tor_ReachableAddresses }}
 {% endif %}
