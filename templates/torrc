@@ -125,4 +125,3 @@ HiddenServiceAuthorizeClient stealth {{ ','.join(service.HiddenServiceAuthorizeC
 {% endif %}
 {% endfor %}
 {% endif %}
-# end of torrc
