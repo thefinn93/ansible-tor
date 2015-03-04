@@ -5,6 +5,7 @@
   with_items:
     - python-apt
     - python-pycurl
+    - sudo
 
 
 - name: install tor project apt signing gpg key
@@ -15,7 +16,7 @@
 - name: setup tor apt repo
   apt_repository: >
     repo='deb http://deb.torproject.org/torproject.org {{ tor_distribution_release }} main'
-    state=present 
+    state=present
     update_cache=yes
 
 ## in case {{ tor_distribution_release }} is a development branch (ie. the name starts with tor-experimental), the line with the distribution name is also needed to install deb.torproject.org-keyring
@@ -27,7 +28,7 @@
 - name: setup tor apt repo in case tor_distribution_release is a development branch
   apt_repository: >
     repo='deb http://deb.torproject.org/torproject.org {{ distribution.stdout }} main'
-    state=present 
+    state=present
     update_cache=yes
   when: tor_distribution_release.startswith('tor-experimental')
 
