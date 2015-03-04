@@ -2,7 +2,7 @@
 
 - name: template torrc
   template: src=torrc dest=/etc/tor/torrc
-    owner=root group=root mode=0644 validate='sudo -u debian-tor tor --verify-config'
+    owner=root group=root mode=0644 validate='sudo -u debian-tor tor --verify-config -f %s'
   notify:
   - restart tor
 
